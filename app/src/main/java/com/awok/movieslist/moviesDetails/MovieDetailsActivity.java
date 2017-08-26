@@ -1,6 +1,7 @@
 package com.awok.movieslist.moviesDetails;
 
 import android.app.ProgressDialog;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         genresTV = (TextView)findViewById(R.id.genresTV);
         statusTV = (TextView)findViewById(R.id.statusTV);
         homePageTV = (TextView)findViewById(R.id.homePageTV);
+        homePageTV.setPaintFlags(homePageTV.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
         Uri uri = Uri.parse(AppConstants.IMAGE_URL + getIntent().getStringExtra("IMAGE_URL"));
