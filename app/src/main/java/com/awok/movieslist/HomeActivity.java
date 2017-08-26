@@ -2,6 +2,7 @@ package com.awok.movieslist;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             //   fragment = new FragmentPopular();
-            changeFrg(new FragmentPopular(), "ONE");
+            changeFragment(new FragmentPopular());
         }
 
 
@@ -68,9 +69,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void changeFrg(android.support.v4.app.Fragment fragment, String frgname) {
-
-        fragmentManager.beginTransaction().replace(R.id.frg_replace, fragment, "" + frgname).commit();
+    public void changeFragment(Fragment fragment) {
+        fragmentManager.beginTransaction().replace(R.id.frg_replace, fragment).commit();
     }
 
     public void updateToolbarTitle(String title){
@@ -86,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,18 +111,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //        return super.onOptionsItemSelected(item);
 //    }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_popular) {
-            changeFrg(new FragmentPopular(), "ONE");
+            changeFragment(new FragmentPopular());
         } else if (id == R.id.nav_top) {
-            changeFrg(new FragmentTop(), "TWO");
+            changeFragment(new FragmentTop());
         } else if (id == R.id.nav_search) {
             fragmentSearch = new FragmentSearch();
-            changeFrg(fragmentSearch, "TWO");
+            changeFragment(fragmentSearch);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -74,7 +74,7 @@ public class FragmentPopular extends Fragment {
         call.enqueue(new Callback<PopularMoviesModel>() {
             @Override
             public void onResponse(Call<PopularMoviesModel> call, Response<PopularMoviesModel> response) {
-                Log.e("Service Length: ", response.body().getResults().size() + "");
+              //  Log.e("Service Length: ", response.body().getResults().size() + "");
                 //  if (response.isSuccessful() && response.body() != null) {
                 if (response.body().getResults().size() > 0) {
                     MovieListAdapter adapter = new MovieListAdapter(getActivity(), response.body().getResults());

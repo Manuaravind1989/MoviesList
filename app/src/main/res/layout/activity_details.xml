@@ -307,7 +307,7 @@
                                 android:id="@+id/genresTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="16dp"
+
                                 android:layout_marginTop="4dp"
                                 android:textColor="@color/normalValueColor"
                                 android:textSize="@dimen/normaltextsize" />
@@ -414,6 +414,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="140dp"
                             android:layout_marginTop="16dp"
+                            fresco:roundedCornerRadius="5dp"
+                            fresco:roundBottomRight="true"
+                            fresco:roundTopRight="true"
+                            fresco:roundTopLeft="true"
+                            fresco:roundBottomLeft="true"
                             fresco:placeholderImage="@drawable/no_img" />
 
                         <LinearLayout

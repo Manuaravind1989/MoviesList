@@ -71,7 +71,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<MoviesDetailModel>() {
             @Override
             public void onResponse(Call<MoviesDetailModel> call, Response<MoviesDetailModel> response) {
-                Log.e("Service Length: ", response.body() + "");
+               // Log.e("Service Length: ", response.body() + "");
                 //  if (response.isSuccessful() && response.body() != null) {
                 overviewTV.setText(response.body().getOverview());
                 voteCountTV.setText(response.body().getVote_count() + "");
