@@ -99,7 +99,7 @@ public class FragmentSearch extends Fragment {
                 //  if (response.isSuccessful() && response.body() != null) {
                 if(response.body().getResults().size()>0) {
                     recyclerView.setVisibility(View.VISIBLE);
-                    MovieListAdapter adapter = new MovieListAdapter(getActivity(), response.body().getResults());
+                    MovieListAdapter adapter = new MovieListAdapter(getActivity(), response.body().getResults(),2);
                     recyclerView.setAdapter(adapter);
                     noResultFoundTV.setVisibility(View.GONE);
                 }else{

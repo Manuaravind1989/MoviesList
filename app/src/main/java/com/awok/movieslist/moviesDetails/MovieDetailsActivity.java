@@ -9,8 +9,10 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.awok.movieslist.R;
+import com.awok.movieslist.db.DatabaseHandler;
 import com.awok.movieslist.networkManager.ServiceManager;
 import com.awok.movieslist.utilities.AppConstants;
+import com.awok.movieslist.utilities.AppUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import retrofit2.Call;
@@ -24,15 +26,17 @@ import retrofit2.Response;
 public class MovieDetailsActivity extends AppCompatActivity {
     private SimpleDraweeView posterImageView, backDropImageView;
     private TextView titleTV, releaseDateTV, overviewTV, voteCountTV, voteAverageTV, originalTitleTV, popularityTV,
-    budgetTv, revenueTV,genresTV, statusTV, homePageTV;
+            budgetTv, revenueTV, genresTV, statusTV, homePageTV;
     ProgressDialog progressDialog;
+    DatabaseHandler databaseHandler;
+    private int type = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.awok.movieslist.R.layout.activity_moviedetails);
 
-
+        databaseHandler = new DatabaseHandler(this);
         posterImageView = (SimpleDraweeView) findViewById(R.id.posterImage);
         backDropImageView = (SimpleDraweeView) findViewById(R.id.backDropImage);
         titleTV = (TextView) findViewById(R.id.titleTV);
@@ -43,12 +47,12 @@ public class MovieDetailsActivity extends AppCompatActivity {
         originalTitleTV = (TextView) findViewById(R.id.originalTitleTV);
         popularityTV = (TextView) findViewById(R.id.popularityTV);
         budgetTv = (TextView) findViewById(R.id.budgetTV);
-        revenueTV = (TextView)findViewById(R.id.revenueTV);
-        genresTV = (TextView)findViewById(R.id.genresTV);
-        statusTV = (TextView)findViewById(R.id.statusTV);
-        homePageTV = (TextView)findViewById(R.id.homePageTV);
+        revenueTV = (TextView) findViewById(R.id.revenueTV);
+        genresTV = (TextView) findViewById(R.id.genresTV);
+        statusTV = (TextView) findViewById(R.id.statusTV);
+        homePageTV = (TextView) findViewById(R.id.homePageTV);
         homePageTV.setPaintFlags(homePageTV.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
+        type = getIntent().getIntExtra("TYPE", 0);
 
         Uri uri = Uri.parse(AppConstants.IMAGE_URL + getIntent().getStringExtra("IMAGE_URL"));
         posterImageView.setImageURI(uri);
@@ -62,7 +66,25 @@ public class MovieDetailsActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading..."); // Setting Message
         progressDialog.setTitle("Movie List"); // Setting Title
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        getPopularMovies();
+        if (AppUtils.isConnected(this)) {
+            getPopularMovies();
+        } else {
+            MoviesDetailModel moviesDetailModel =
+                    databaseHandler.getMovieItem(Integer.valueOf(getIntent().getStringExtra("ID")), type);
+            if (moviesDetailModel != null) {
+                overviewTV.setText(moviesDetailModel.getOverview());
+                voteCountTV.setText(moviesDetailModel.getVote_count() + "");
+                voteAverageTV.setText(moviesDetailModel.getVote_average() + "");
+                originalTitleTV.setText(moviesDetailModel.getOverview());
+                popularityTV.setText(moviesDetailModel.getPopularity() + "");
+                budgetTv.setText(moviesDetailModel.getBudget() + "");
+                revenueTV.setText(moviesDetailModel.getRevenue() + "");
+                statusTV.setText(moviesDetailModel.getStatus());
+                homePageTV.setText(moviesDetailModel.getHomepage());
+            }
+        }
+
+
     }
 
 
@@ -73,23 +95,24 @@ public class MovieDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<MoviesDetailModel>() {
             @Override
             public void onResponse(Call<MoviesDetailModel> call, Response<MoviesDetailModel> response) {
-               // Log.e("Service Length: ", response.body() + "");
+                // Log.e("Service Length: ", response.body() + "");
                 //  if (response.isSuccessful() && response.body() != null) {
                 overviewTV.setText(response.body().getOverview());
                 voteCountTV.setText(response.body().getVote_count() + "");
                 voteAverageTV.setText(response.body().getVote_average() + "");
                 originalTitleTV.setText(response.body().getOverview());
-                popularityTV.setText(response.body().getPopularity()+"");
-                budgetTv.setText(response.body().getBudget()+"");
-                revenueTV.setText(response.body().getRevenue()+"");
-                for(MoviesDetailModel.GenresEntity genresEntity : response.body().getGenres()){
-                    genresTV.setText(genresTV.getText().toString()+"- "+genresEntity.getName()+"\n");
+                popularityTV.setText(response.body().getPopularity() + "");
+                budgetTv.setText(response.body().getBudget() + "");
+                revenueTV.setText(response.body().getRevenue() + "");
+                for (MoviesDetailModel.GenresEntity genresEntity : response.body().getGenres()) {
+                    genresTV.setText(genresTV.getText().toString() + "- " + genresEntity.getName() + "\n");
                 }
                 statusTV.setText(response.body().getStatus());
                 homePageTV.setText(response.body().getHomepage());
                 Uri uri1 = Uri.parse(AppConstants.IMAGE_URL + response.body().getBackdrop_path());
                 backDropImageView.setImageURI(uri1);
                 progressDialog.dismiss();
+                databaseHandler.updateMovies(response.body(), 0);
             }
 
             @Override

@@ -21,10 +21,12 @@ import java.util.List;
 public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private List<PopularMoviesModel.ResultsEntity> mValues;
     private Context context;
+    private int type;
 
-    public MovieListAdapter(Context context, List<PopularMoviesModel.ResultsEntity> items) {
+    public MovieListAdapter(Context context, List<PopularMoviesModel.ResultsEntity> items, int type) {
         this.context = context;
         mValues = items;
+        this.type = type;
     }
 
     @Override
@@ -51,6 +53,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieViewHolder> {
                 intent.putExtra("RELEASE_DATE", mValues.get(position).getRelease_date());
 //
                 intent.putExtra("ID", mValues.get(position).getId()+"");
+                intent.putExtra("TYPE",type);
 
                 context.startActivity(intent);
             }
