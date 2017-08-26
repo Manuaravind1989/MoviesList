@@ -6,4 +6,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="subtitletextSize">14sp</dimen>
+    <dimen name="subtitlevalueSize">14sp</dimen>
+    <dimen name="normaltextsize">12sp</dimen>
+
 </resources>

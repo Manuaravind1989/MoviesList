@@ -82,7 +82,7 @@
                             android:maxLines="1"
                             android:text="@string/releaseDate"
                             android:textColor="@color/colorAccent"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/normaltextsize" />
 
                         <TextView
                             android:id="@+id/releaseDateTV"
@@ -95,7 +95,7 @@
                             android:maxLines="1"
                             android:text="-"
                             android:textColor="@color/colorAccent"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/normaltextsize" />
 
 
                     </LinearLayout>
@@ -114,8 +114,8 @@
                             android:lines="1"
                             android:maxLines="1"
                             android:text="@string/originalTitle"
-                            android:textColor="#7b7b7b"
-                            android:textSize="12sp" />
+                            android:textColor="@color/normaltextColor"
+                            android:textSize="@dimen/normaltextsize" />
 
                         <TextView
                             android:id="@+id/originalTitleTV"
@@ -127,8 +127,8 @@
                             android:lines="1"
                             android:maxLines="1"
                             android:text="-"
-                            android:textColor="#888"
-                            android:textSize="12sp" />
+                            android:textColor="@color/normalValueColor"
+                            android:textSize="@dimen/normaltextsize" />
 
 
                     </LinearLayout>
@@ -156,8 +156,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/voteCount"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/voteCountTV"
@@ -166,8 +166,8 @@
                                 android:layout_marginTop="4dp"
                                 android:lines="1"
                                 android:maxLines="1"
-                                android:textColor="#888"
-                                android:textSize="12dp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -187,8 +187,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/voteAverage"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/voteAverageTV"
@@ -198,8 +198,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
 
-                                android:textColor="#888"
-                                android:textSize="12dp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -229,8 +229,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/budget"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/budgetTV"
@@ -239,8 +239,8 @@
                                 android:layout_marginTop="4dp"
                                 android:lines="1"
                                 android:maxLines="1"
-                                android:textColor="#888"
-                                android:textSize="12dp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -261,8 +261,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/revenue"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/revenueTV"
@@ -271,8 +271,8 @@
                                 android:layout_marginTop="4dp"
                                 android:lines="1"
                                 android:maxLines="1"
-                                android:textColor="#888"
-                                android:textSize="12dp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -300,8 +300,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/genres"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/genresTV"
@@ -309,8 +309,8 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="16dp"
                                 android:layout_marginTop="4dp"
-                                android:textColor="#888"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                         </LinearLayout>
 
@@ -330,8 +330,8 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/status"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/statusTV"
@@ -340,8 +340,8 @@
                                 android:layout_marginTop="4dp"
                                 android:lines="1"
                                 android:maxLines="1"
-                                android:textColor="#888"
-                                android:textSize="12dp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -380,8 +380,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
 
-                            android:textColor="#888"
-                            android:textSize="14sp" />
+                            android:textColor="@color/normalValueColor"
+                            android:textSize="@dimen/normaltextsize" />
 
                         <View
                             android:layout_width="match_parent"
@@ -437,21 +437,21 @@
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="@string/homePage"
-                                android:textColor="#7b7b7b"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normaltextColor"
+                                android:textSize="@dimen/normaltextsize" />
 
                             <TextView
                                 android:id="@+id/homePageTV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="4dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginRight="4dp"
                                 android:layout_marginTop="6dp"
                                 android:lines="1"
                                 android:maxLines="1"
                                 android:text="-"
-                                android:textColor="#888"
-                                android:textSize="12sp" />
+                                android:textColor="@color/normalValueColor"
+                                android:textSize="@dimen/normaltextsize" />
 
 
                         </LinearLayout>
@@ -478,7 +478,7 @@
                                 android:maxLines="1"
                                 android:text=""
                                 android:textColor="#646464"
-                                android:textSize="11dp" />
+                                android:textSize="@dimen/normaltextsize" />
 
                         </LinearLayout>
                     </LinearLayout>
