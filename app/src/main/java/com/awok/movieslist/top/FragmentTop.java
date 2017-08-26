@@ -84,8 +84,14 @@ public class FragmentTop extends Fragment {
                 resultsEntity.setPopularity(moviesDetailModel.getPopularity());
                 popularMoviesModels.add(resultsEntity);
             }
-            MovieListAdapter adapter = new MovieListAdapter(getActivity(), popularMoviesModels,1);
-            recyclerView.setAdapter(adapter);
+            if(popularMoviesModels.size()>0) {
+                MovieListAdapter adapter = new MovieListAdapter(getActivity(), popularMoviesModels, 1);
+                recyclerView.setAdapter(adapter);
+            }else{
+                noResultTV.setVisibility(View.VISIBLE);
+                noResultTV.setText(getString(R.string.noResultFound));
+                recyclerView.setVisibility(View.GONE);
+            }
         }
 
         return rootView;

@@ -20,6 +20,7 @@
         android:text="@string/noResultFound"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
 </LinearLayout>
